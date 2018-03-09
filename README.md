@@ -14,11 +14,11 @@
 在package.json添加
 
 ```
-	"proxy": "http://api.yoursite.com",
+"proxy": "http://api.yoursite.com",
 ```
 特定配置
 ```
-	"proxy": {
+"proxy": {
     "/api": {
       "target": "http://api.yoursite.com",
       "changeOrigin": true,
