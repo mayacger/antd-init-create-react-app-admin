@@ -10,14 +10,12 @@ import Layout, { UserLayout } from './layout';
 import { isLogin } from './action';
 
 
-// <Route path='/' component={Layout} />
 class RoutePage extends  Component{
 
 	componentDidMount () {
 		this.props.isLogin();
 	}
 	render () {
-		console.log(this.props);
 		const { user:{ isLogin } } = this.props;
 		const loggedIn = true;
 		return(

@@ -43,7 +43,7 @@ class UserLayout extends PureComponent {
 	getPageTitle() {
     const { location } = this.props;
     const { pathname } = location;
-    let title = 'Ant Design Pro';
+    let title = '网站名称';
     if (routerData[pathname] && routerData[pathname].name) {
       title = `${routerData[pathname].name}`;
     }
@@ -59,10 +59,10 @@ class UserLayout extends PureComponent {
               <div className="header">
                 <Link to="/">
                   <img alt="logo" className="logo-login" src={logo} />
-                  <span className="title">遛弯电商</span>
+                  <span className="title">网站名称</span>
                 </Link>
               </div>
-              <div className="desc">先进的电商管理运营推广系统</div>
+              <div className="desc">网站说明</div>
             </div>
 						<Switch >
 							<Route exact path="/user/login" component={Login}/>

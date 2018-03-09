@@ -35,7 +35,8 @@ class LayoutWrapper extends PureComponent {
 	}
 
 	componentDidMount () {
-		getData('moduleManage/auth/moduleManage/findModulesTree/SYS_BIG')
+		//动态获取菜单数据
+		getData('/api/data')
 		.then(data => {
 			if(data.resultCode > 0 ) {
 				this.setState({
@@ -50,7 +51,7 @@ class LayoutWrapper extends PureComponent {
 
     const { pathname } = location;
 
-    let title = '遛弯电商';
+    let title = '网站名称';
     if (SiderMenuList[pathname] && SiderMenuList[pathname].name) {
       title = `${SiderMenuList[pathname].name} `;
     }

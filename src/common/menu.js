@@ -1,3 +1,4 @@
+//请勿使用
 const menuBase = {
 	"HR8HjoFl": {
 		name: '系统配置管理',
