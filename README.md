@@ -7,7 +7,7 @@
 - 没有采用redux-saga，也是便于初学redux简单些。
 
 ## 已知问题
-— ~~没有实现less 做为对象引入，即 import style from './index.less' 模式，目前暂时使用 import './index.less'，因此有可能污染全局css，请注意css命名。~~ 采用yarn eject配置 已经支持，less要命名*.module.less，如：index.module.less，即 import style from 'index.module.less'
+— ~~没有实现less 做为对象引入，即 import style from './index.less' 模式，目前暂时使用 import './index.less'，因此有可能污染全局css，请注意css命名。~~ 采用yarn eject配置 已经支持，less要命名*.module.less，如：index.module.less，即 import style from './index.module.less'
 
 
 ## proxy
