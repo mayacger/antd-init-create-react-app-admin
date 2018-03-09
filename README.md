@@ -36,9 +36,9 @@
 ## 使用
 
 ```bash
-$ git clone 
-$ cd 
-$ npm i or yarn
+$ git clone https://github.com/mayacger/antd-init-create-react-app-admin.git
+$ cd antd-init-create-react-app-admin
+$ yarn //或者 npm i
 $ yarn start        
 ```
 ## 兼容性
