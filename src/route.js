@@ -29,19 +29,17 @@ class RoutePage extends  Component{
 						)
 						)} />
 					<Route path='/' render={() => (
-						isLogin ? (
-							<Route component={Layout} />
-						) : (
-							<Redirect to="/user/login"/>
-						)
-						)} />
-
+					isLogin ? (
+						<Route component={Layout} />
+					) : (
+						<Redirect to="/user/login"/>
+					)
+					)} />
 				</Switch>
 			</Router>
-		)
+		);
 	}
 }
-
 export default connect((state) =>({
 	user: state.user,
 }),

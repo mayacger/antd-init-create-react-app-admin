@@ -29,6 +29,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "moment": "^2.21.0",
     "object-assign": "4.1.1",
     "omit.js": "^1.0.0",
     "path-to-regexp": "^2.2.0",
@@ -59,7 +60,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "proxy": "http://ec.xrp6.cn:8089",
+  "proxy": "http://www.yoursite.com",
   "devDependencies": {
     "babel-plugin-import": "^1.6.5",
     "react-app-rewire-css-modules": "codebandits/react-app-rewire-css-modules",

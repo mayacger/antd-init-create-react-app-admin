@@ -1,4 +1,3 @@
-//请勿使用
 const menuBase = {
 	"HR8HjoFl": {
 		name: '系统配置管理',
@@ -14,7 +13,7 @@ const menuBase = {
 	"Y0x4ifsX": {
 		name: '用户相关配置',
 	  icon: 'user',
-	  path: '/user',
+	  path: '/account',
 		children: {
 			"lw6R69Bj": {
 				name: '商家用户管理',
@@ -100,16 +99,26 @@ const menuBase = {
 };
 
 export const getMenuData = (list, base = menuBase, parentPath = '') => {
-	 return list.map((item) => {
-		const parent = base[item.modNo];
+
+	let arr = list;
+	if(!list) {
+		arr = Object.keys(base);
+	}
+	 return arr.map((item) => {
+		const parent = base[item.modNo ? item.modNo : item ];
 		const result = {
 			// ...item,
 			name: parent.name || item.name,
 			path: parentPath + parent.path,
 			icon: parent.icon || '',
+		};
+		let children = item.childSysModules;
+		if (!children && parent.children) {
+			children = Object.keys(parent.children);
 		}
-		if(item.childSysModules.length) {
-			result.children = getMenuData(item.childSysModules, parent.children, `${parentPath + parent.path}` );
+
+		if(children && children.length) {
+			result.children = getMenuData(children, parent.children, `${parentPath + parent.path}` );
 			//  item.childSysModules.map((subItem) => {
 			// 	if (parent.children[subItem.modNo]) {
 			// 		 subItem.path = item.path + parent.children[subItem.modNo].path;

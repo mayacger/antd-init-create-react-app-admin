@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
 
@@ -43,7 +43,7 @@ class UserLayout extends PureComponent {
 	getPageTitle() {
     const { location } = this.props;
     const { pathname } = location;
-    let title = '网站名称';
+    let title = 'Ant Design Pro';
     if (routerData[pathname] && routerData[pathname].name) {
       title = `${routerData[pathname].name}`;
     }
@@ -59,10 +59,10 @@ class UserLayout extends PureComponent {
               <div className="header">
                 <Link to="/">
                   <img alt="logo" className="logo-login" src={logo} />
-                  <span className="title">网站名称</span>
+                  <span className="title">遛弯电商</span>
                 </Link>
               </div>
-              <div className="desc">网站说明</div>
+              <div className="desc">先进的电商管理运营推广系统</div>
             </div>
 						<Switch >
 							<Route exact path="/user/login" component={Login}/>

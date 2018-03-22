@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { routerRedux } from 'react-router-redux';
 import { Form, Input, Button, Select, Row, Col, Popover, Progress } from 'antd';
-import './Register.less';
+import styles from './Register.module.less';
 import Link from '../../components/Link';
 
 const FormItem = Form.Item;
@@ -10,9 +10,9 @@ const { Option } = Select;
 const InputGroup = Input.Group;
 
 const passwordStatusMap = {
-  ok: <div className="success">强度：强</div>,
-  pass: <div className="warning">强度：中</div>,
-  poor: <div className="error">强度：太短</div>,
+  ok: <div className={styles.success}>强度：强</div>,
+  pass: <div className={styles.warning}>强度：中</div>,
+  poor: <div className={styles.error}>强度：太短</div>,
 };
 
 const passwordProgressMap = {
@@ -77,11 +77,11 @@ class Register extends Component {
     this.props.form.validateFields({ force: true }, (err, values) => {
       if (!err) {
         this.props.dispatch({
-          type: 'register/submit',
-          payload: {
-            ...values,
-            prefix: this.state.prefix,
-          },
+					type: 'LOGIN',
+	        payload: {
+	          ...values,
+						isLogin: true,
+	        },
         });
       }
     });
@@ -140,7 +140,7 @@ class Register extends Component {
     const value = form.getFieldValue('password');
     const passwordStatus = this.getPasswordStatus();
     return value && value.length ? (
-      <div className={`progress-${passwordStatus}`}>
+      <div className={styles[`progress-${passwordStatus}`]}>
         <Progress
           status={passwordProgressMap[passwordStatus]}
           className="progress"
@@ -158,7 +158,7 @@ class Register extends Component {
     const { getFieldDecorator } = form;
     const { count, prefix } = this.state;
     return (
-      <div className="register-main">
+      <div className={styles['register-main']}>
         <h3>注册</h3>
         <Form onSubmit={this.handleSubmit}>
           <FormItem>
@@ -265,7 +265,7 @@ class Register extends Component {
                 <Button
                   size="large"
                   disabled={count}
-                  className="getCaptcha"
+                  className={styles.getCaptcha}
                   onClick={this.onGetCaptcha}
                 >
                   {count ? `${count} s` : '获取验证码'}
@@ -277,13 +277,13 @@ class Register extends Component {
             <Button
               size="large"
               loading={submitting}
-              className="submit"
+              className={styles.submit}
               type="primary"
               htmlType="submit"
             >
               注册
             </Button>
-            <Link className="login" to="/user/login">
+            <Link className={styles.login} to="/user/login">
               使用已有账户登录
             </Link>
           </FormItem>
@@ -292,10 +292,6 @@ class Register extends Component {
     );
   }
 }
-// @connect(({ register, loading }) => ({
-//   register,
-//   submitting: loading.effects['register/submit'],
-// }))
 export default Form.create()(connect(({register, loading}) => ({
 	register,
   // submitting: loading.effects['register/submit'],

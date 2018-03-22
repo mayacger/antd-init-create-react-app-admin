@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
 			<Provider store={store}>
-          <RoutePage store={store} />
+          <RoutePage />
       </Provider>
     );
   }

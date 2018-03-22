@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Tabs } from 'antd';
+import { Form } from 'antd';
 import classNames from 'classnames';
 
 import InputItem from './InputItem';
@@ -74,8 +74,8 @@ class FormCtrl extends Component {
   }
 
 	render () {
-		const { className, children, mapConfig } = this.props;
-    const { type, tabs } = this.state;
+		const { className, children } = this.props;
+    // const { type, tabs } = this.state;
     const TabChildren = [];
     const otherChildren = [];
     React.Children.forEach(children, (item) => {

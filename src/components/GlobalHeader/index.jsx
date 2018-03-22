@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { Layout, Icon, Dropdown, Avatar, Menu
  } from 'antd';
 
-import './index.less';
+import styles from './index.module.less';
 const { Header } = Layout;
 
 
@@ -24,14 +24,14 @@ export default class GlobalHeader extends PureComponent {
 		return(
 			<Header style={{color: '#fff', padding: 0}}>
 				<Icon
-          className='trigger'
+          className={styles.trigger}
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={ () => toggle()}
         />
-				<div className="right">
+			<div className={styles.right}>
 					<Dropdown overlay={menu}>
-				    <span className="action account">
-							 <Avatar size="small" className="avatar" src={''} />
+				    <span className={styles.action + " " +styles.account}>
+							 <Avatar size="small" className={styles.avatar} src={''} />
 				      admin
 					</span>
 				  </Dropdown>

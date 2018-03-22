@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Checkbox, Alert, Icon } from 'antd';
-import { bindActionCreators } from 'redux';
+import { Checkbox } from 'antd';
 import { connect } from 'react-redux';
 
 import SubmitButton from '../../components/From/SubmitButton';
 import Link from '../../components/Link';
 import From, { InputItem } from '../../components/From';
-import './main.less';
+import styles from './index.module.less';
 import mapConfig from './map';
-
+import { toLogin } from '../../action';
 
 class Login extends Component {
 	state = {
@@ -23,22 +22,15 @@ class Login extends Component {
   }
 
 	handleSubmit = (err, values) => {
-    const { type } = this.state;
     if (!err) {
-      this.props.dispatch({
-        type: 'LOGIN',
-        payload: {
-          ...values,
-          type,
-					isLogin: true,
-        },
-      });
+			this.props.dispatch(toLogin(values));
     }
   }
 
 
 	render () {
 		const { type } = this.state;
+		const { submitting } = this.props;
 		const UserName = InputItem({
 		    defaultProps: mapConfig.UserName.props,
 		    defaultRules: mapConfig.UserName.rules,
@@ -52,7 +44,7 @@ class Login extends Component {
 
 
 		return (
-			<div className="user-main">
+			<div className={styles.main}>
 				<From
 					defaultActiveKey={type}
 					onSubmit={this.handleSubmit}
@@ -64,13 +56,15 @@ class Login extends Component {
 
 	          <a style={{ float: 'right' }} href="">忘记密码</a>
 	        </div>
-					<SubmitButton>登录</SubmitButton>
-					<div className="other">
-	            <Link className="register" to="/user/register">注册账户</Link>
+					<SubmitButton loading ={submitting}>登录</SubmitButton>
+					<div className={styles.other}>
+	            <Link className={styles.register} to="/user/register">注册账户</Link>
 	        </div>
 				</From>
 			</div>
 		)
 	}
 }
-export default connect()(Login);
+export default connect(state => ({
+	submitting: state.user.submitting
+}))(Login);
